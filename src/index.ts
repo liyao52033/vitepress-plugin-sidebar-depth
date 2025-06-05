@@ -7,9 +7,14 @@ import { DefaultTheme } from "vitepress";
 export * from "./types";
 export * from "./util";
 
-export default function VitePluginVitePressSidebarResolve(option: SidebarOption = {}): Plugin & { name: string } {
+/**
+ * VitePress侧边栏自动生成插件
+ * @param option 配置选项
+ * @returns Vite插件
+ */
+export default function VitePluginVitePressSidebarResolve(option: SidebarOption = {}): Plugin & { name: string } { 
   return {
-    name: "vite-plugin-vitepress-sidebar-resolve",
+    name: "vite-plugin-vitepress-sidebar-depth",
     configureServer({ watcher, restart }: ViteDevServer) {
       const fsWatcher = watcher.add("*.md");
       // 监听文件系统事件
@@ -64,6 +69,11 @@ export default function VitePluginVitePressSidebarResolve(option: SidebarOption 
   };
 }
 
+/**
+ * 设置侧边栏数据
+ * @param themeConfig 主题配置
+ * @param sidebar 侧边栏数据
+ */
 const setSideBar = (themeConfig: any, sidebar: DefaultTheme.SidebarMulti) => {
   // 防止 themeConfig 为 undefined
   themeConfig = themeConfig || {};

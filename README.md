@@ -23,15 +23,15 @@
 ::: code-group
 
 ```sh [npm]
-npm install vitepress-plugin-depth -D
+npm vitepress-plugin-sidebar-resolve -D
 ```
 
 ```sh [yarn]
-yarn add vitepress-plugin-depth -D
+yarn add vitepress-plugin-sidebar-resolve -D
 ```
 
 ```sh [pnpm]
-pnpm i vitepress-plugin-depth -D
+pnpm i vitepress-plugin-sidebar-resolve -D
 ```
 
 :::

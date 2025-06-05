@@ -18,7 +18,7 @@ export const DEFAULT_IGNORE_DIR = ["node_modules", "dist", ".vitepress", "public
  * @param  option 配置项
  * @param prefix 指定前缀，在生成侧边栏的 link 时，会自动加上前缀
  */
-export default (option: SidebarOption = { depth: 0 }, prefix = "/"): DefaultTheme.SidebarMulti => {
+export default (option: SidebarOption = { depth: 1 }, prefix = "/"): DefaultTheme.SidebarMulti => {
 	const {
 		path = process.cwd(),
 		ignoreList = [],
@@ -63,7 +63,7 @@ const generateSidebarRecursively = (
 	const sidebarItems = createSideBarItems(dirPath, option, newPrefix);
 
 	if (!sidebarItems.length) {
-		log(`Warning：该目录 '${dirPath}' 内部没有任何文件或文件序号出错，将忽略生成对应侧边栏`);
+		log(`Warning: 该目录 '${dirPath}' 内部没有任何文件或文件序号出错，将忽略生成对应侧边栏`);
 		return;
 	}
 
@@ -181,13 +181,13 @@ const createSideBarItems = (
 
 		// 校验文件序号
 		if (fileIndexPrefix && isIllegalIndex(index)) {
-			log(`Warning：该文件 '${filePath}' 序号出错，请填写正确的序号`);
+			log(`Warning: 该文件 '${filePath}' 序号出错，请填写正确的序号`);
 			return [];
 		}
 
 		// 判断序号是否已经存在
 		if (sidebarItems[index]) {
-			log(`Warning：该文件 '${filePath}' 的序号在同一文件夹中重复出现，请检查`, "red");
+			log(`Warning: 该文件 '${filePath}' 的序号在同一文件夹中重复出现，请检查`, "red");
 			return;
 		}
 
